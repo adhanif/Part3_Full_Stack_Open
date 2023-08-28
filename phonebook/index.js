@@ -36,6 +36,16 @@ app.get("/info", (req, res) => {
   <br/>  ${currentTime}`);
 });
 
+app.get("/api/persons/:id", (req, res) => {
+  const { id } = req.params;
+  const findPerson = persons.find((person) => person.id === Number(id));
+  if (findPerson) {
+    res.json(findPerson);
+  } else {
+    res.status(404).end();
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server started on port  http://localhost:${port}`);
 });
