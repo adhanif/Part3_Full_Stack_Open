@@ -57,6 +57,30 @@ app.delete("/api/persons/:id", (req, res) => {
   }
 });
 
+const newID = () => {
+  const maxId =
+    persons.length > 0 ? Math.max(...persons.map((person) => person.id)) : 0;
+
+  return maxId + 1;
+};
+
+app.post("/api/persons", (req, res) => {
+  const body = req.body;
+  if (!body.name) {
+    return res.status(400).json({
+      error: "name missing",
+    });
+  }
+  const person = {
+    id: newID(),
+    name: body.name,
+    number: body.number,
+  };
+
+  persons = [...persons, person];
+  res.json(persons);
+});
+
 app.listen(port, () => {
   console.log(`Server started on port  http://localhost:${port}`);
 });
