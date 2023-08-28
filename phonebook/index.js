@@ -65,20 +65,33 @@ const newID = () => {
 };
 
 app.post("/api/persons", (req, res) => {
-  const body = req.body;
-  if (!body.name) {
+  const { name, number } = req.body;
+  if (!name) {
     return res.status(400).json({
       error: "name missing",
     });
+  } else if (!number) {
+    return res.status(400).json({
+      error: "number missing",
+    });
   }
-  const person = {
-    id: newID(),
-    name: body.name,
-    number: body.number,
-  };
 
-  persons = [...persons, person];
-  res.json(persons);
+  const nameExisted = persons.find((person) => person.name === name);
+
+  if (!nameExisted) {
+    const person = {
+      id: newID(),
+      name: name,
+      number: number,
+    };
+
+    persons = [...persons, person];
+    res.json(persons);
+  } else {
+    return res.status(400).json({
+      error: "name must be unique",
+    });
+  }
 });
 
 app.listen(port, () => {
