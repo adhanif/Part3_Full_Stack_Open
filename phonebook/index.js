@@ -1,15 +1,18 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
-const cors = require("cors");
 
+const cors = require("cors");
+const port = process.env.PORT || 3001;
 // app.use(cors());
 
 const corsOptions = {
   origin: "http://localhost:5173",
   credentials: true,
 };
+
 app.use(cors(corsOptions));
+app.use(express.json());
+
 const morgan = require("morgan");
 morgan.token("postData", (req) => {
   return JSON.stringify(req.body);
@@ -20,6 +23,7 @@ app.use(
     ":method :url :status :response-time ms - :res[content-length] :postData"
   )
 );
+
 let persons = [
   {
     id: 1,
@@ -111,7 +115,6 @@ app.post("/api/persons", (req, res) => {
   }
 });
 
-const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server started on port  http://localhost:${port}`);
 });
