@@ -3,8 +3,13 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 
-app.use(cors());
+// app.use(cors());
 
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 const morgan = require("morgan");
 morgan.token("postData", (req) => {
   return JSON.stringify(req.body);
