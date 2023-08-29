@@ -34,6 +34,7 @@ export default function Persons({
   return (
     <div>
       {personsToShow &&
+        Array.isArray(personsToShow) &&
         personsToShow.map((person) => {
           return (
             <div style={{ display: "flex" }} key={person.id}>

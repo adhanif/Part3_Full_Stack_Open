@@ -7,7 +7,7 @@ import axiosClient from "./services/axiosClient";
 import NotificationError from "./components/NotificationError";
 
 function App() {
-  const [persons, setPersons] = useState();
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [keyWord, setKeyWord] = useState("");
