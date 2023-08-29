@@ -15,9 +15,9 @@ function App() {
 
   useEffect(() => {
     axiosClient
-      .get()
+      .get("/persons")
       .then((response) => {
-        // console.log(response);
+        // console.log(response.data);
         setPersons(response.data);
       })
       .catch((err) => {
