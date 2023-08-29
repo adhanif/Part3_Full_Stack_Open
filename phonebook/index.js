@@ -6,16 +6,16 @@ const app = express();
 const port = process.env.PORT || 3001;
 app.use(express.static(path.join(__dirname, "client", "dist")));
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true,
-};
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
-app.use(cors(corsOptions));
-app.use(cors());
+// app.use(cors(corsOptions));
+// app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "dist")));
-app.use(express.static("dist"));
 
 // const morgan = require("morgan");
 // morgan.token("postData", (req) => {
