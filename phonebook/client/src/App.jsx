@@ -14,10 +14,15 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    axiosClient.getAll().then((response) => {
-      // console.log(response);
-      setPersons(response);
-    });
+    axiosClient
+      .get()
+      .then((response) => {
+        // console.log(response);
+        setPersons(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const handleName = (e) => {
