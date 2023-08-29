@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, "client", "dist")));
 
 const corsOptions = {
   origin: "http://localhost:5173",
-  // credentials: true,
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -17,16 +17,16 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "dist")));
 app.use(express.static("dist"));
 
-const morgan = require("morgan");
-morgan.token("postData", (req) => {
-  return JSON.stringify(req.body);
-});
+// const morgan = require("morgan");
+// morgan.token("postData", (req) => {
+//   return JSON.stringify(req.body);
+// });
 
-app.use(
-  morgan(
-    ":method :url :status :response-time ms - :res[content-length] :postData"
-  )
-);
+// app.use(
+//   morgan(
+//     ":method :url :status :response-time ms - :res[content-length] :postData"
+//   )
+// );
 
 let persons = [
   {
