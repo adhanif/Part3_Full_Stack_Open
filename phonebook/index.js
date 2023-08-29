@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 app.use(express.static(path.join(__dirname, "client", "dist")));
 
 const corsOptions = {
-  origin: "http://localhost:5174",
+  origin: "http://localhost:5173",
   credentials: true,
 };
 
