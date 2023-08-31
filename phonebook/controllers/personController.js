@@ -56,9 +56,36 @@ const updatePerson = async (req, res, next) => {
   }
 };
 
+const getOnePerson = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const person = await Person.findById({ _id: id });
+    res.status(201).json(person);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getInfoPersons = async (req, res, next) => {
+  try {
+    const totalPersons = await Person.count();
+    const currentTime = new Date();
+
+    res.status(201).send(
+      `Phonebook has info for ${totalPersons} people 
+        <br/>  
+        ${currentTime}`
+    );
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllPersons,
   createPerson,
   deletePerson,
   updatePerson,
+  getOnePerson,
+  getInfoPersons,
 };
