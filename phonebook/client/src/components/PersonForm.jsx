@@ -73,7 +73,6 @@ export default function PersonForm({
         }, 3000);
       })
       .catch((err) => {
-        console.log(err.response.data.error);
         setErrorMessage(`${err.response.data.error}`);
         setTimeout(() => {
           setErrorMessage(null);
