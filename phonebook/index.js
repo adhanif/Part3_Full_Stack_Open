@@ -15,20 +15,7 @@ app.use(
   })
 );
 
-// app.use(cors(corsOptions));
-
 app.use(express.json());
-
-// const morgan = require("morgan");
-// morgan.token("postData", (req) => {
-//   return JSON.stringify(req.body);
-// });
-
-// app.use(
-//   morgan(
-//     ":method :url :status :response-time ms - :res[content-length] :postData"
-//   )
-// );
 
 let persons = [
   {
