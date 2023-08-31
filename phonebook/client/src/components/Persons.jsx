@@ -17,7 +17,7 @@ export default function Persons({
     const confirmed = window.confirm("Do you really want to delete?");
     if (confirmed) {
       axiosClient
-        .Delete(person.id)
+        .Delete(person._id)
         .then((returnedData) => {
           setPersons(returnedData);
           setErrorMessage(`${person.name} is  deleted`);

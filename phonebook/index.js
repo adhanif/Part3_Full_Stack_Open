@@ -3,8 +3,8 @@ require("dotenv").config();
 require("./mongoDb");
 const cors = require("cors");
 const path = require("path");
-const { personRouter } = require("./routes/person");
-const { errorHandler } = require("./middlewares/errorHandler");
+const { personRouter } = require("./routes/personRoutes");
+const { errorHandler } = require("./middlewares/errorMiddleware");
 
 const app = express();
 const port = process.env.PORT || 3001;
