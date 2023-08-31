@@ -1,12 +1,5 @@
 import axios from "axios";
 const baseUrl = (import.meta.env.VITE_BE_URL || "") + "/api/persons";
-// const baseUrl = "http://localhost:3001/api/persons";
-
-// const axiosClient = axios.create({
-//   baseURL: (import.meta.env.VITE_BE_URL || "") + "/api",
-//   withCredentials: true,
-// });
-// export default axiosClient;
 
 const getAll = () => {
   const request = axios.get(baseUrl);
