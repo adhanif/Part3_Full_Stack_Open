@@ -65,7 +65,6 @@ export default function PersonForm({
     axiosClient
       .create(personObj)
       .then((res) => {
-        // console.log(res);
         setPersons([...persons, res]);
         setErrorMessage(`${res.name} is created`);
         setTimeout(() => {
