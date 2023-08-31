@@ -4,6 +4,7 @@ require("./mongoDb");
 const cors = require("cors");
 const path = require("path");
 const { personRouter } = require("./routes/person");
+const { errorHandler } = require("./middlewares/errorHandler");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -113,6 +114,8 @@ app.use("/api/persons", personRouter);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
+
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server started on port  http://localhost:${port}`);

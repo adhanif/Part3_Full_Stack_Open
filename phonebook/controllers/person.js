@@ -1,12 +1,11 @@
 const Person = require("../modelSchemas/PersonSchema");
 
-const getAllPersons = async (req, res) => {
+const getAllPersons = async (req, res, next) => {
   try {
     const persons = await Person.find();
     res.status(201).json(persons);
   } catch (error) {
-    console.log(error);
-    console.log("error creating event");
+    next(error);
   }
 };
 
@@ -17,7 +16,7 @@ const createPerson = async (req, res) => {
     res.status(201).json(person);
   } catch (error) {
     console.log(error);
-    console.log("error creating event");
+    next(error);
   }
 };
 
