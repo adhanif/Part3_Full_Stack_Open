@@ -37,7 +37,7 @@ export default function Persons({
         Array.isArray(personsToShow) &&
         personsToShow.map((person) => {
           return (
-            <div style={{ display: "flex" }} key={person.id}>
+            <div style={{ display: "flex" }} key={person._id}>
               <p style={{ margin: "0px" }}>
                 {person.name} {person.number}
               </p>
