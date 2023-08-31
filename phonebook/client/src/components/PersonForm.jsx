@@ -34,26 +34,18 @@ export default function PersonForm({
         `${newName} is already added to phonebook, do you want to replace the old number with a new one?`
       );
       if (confirmed) {
+        // console.log(findName._id);
         axiosClient
-          .update(findName.id, { name: newName, number: newNumber })
-          .then((res) => {
-            const updatedPersons = persons.map((oldperson) =>
-              oldperson.id != findName.id ? oldperson : res
-            );
-            setPersons(updatedPersons);
-            setErrorMessage(`${res.name}'s phonenumber has been updated`);
+          .update(findName._id, { name: newName, number: newNumber })
+          .then((returnedData) => {
+            setPersons(returnedData);
+            setErrorMessage(`${findName.name}'s phonenumber has been updated`);
             setTimeout(() => {
               setErrorMessage(null);
             }, 3000);
           })
           .catch((err) => {
-            // console.log(err);
-            setErrorMessage(`${findName.name} is already deleted`);
-            setTimeout(() => {
-              setErrorMessage(null);
-            }, 3000);
-            // console.log(persons.filter((person) => person.id !== findName.id));
-            setPersons(persons.filter((person) => person.id !== findName.id));
+            console.log(err);
           });
         setNewName("");
         setNewNumber("");

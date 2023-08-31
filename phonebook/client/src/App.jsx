@@ -23,7 +23,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [persons]);
 
   const handleName = (e) => {
     setNewName(e.target.value);
