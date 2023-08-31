@@ -4,7 +4,7 @@ const personSchema = new mongoose.Schema({
     type: String,
   },
   number: {
-    type: Number,
+    type: String,
   },
 });
 
