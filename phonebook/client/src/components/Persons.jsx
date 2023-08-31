@@ -17,7 +17,7 @@ export default function Persons({
     const confirmed = window.confirm("Do you really want to delete?");
     if (confirmed) {
       axiosClient
-        .Delete(person.id)
+        .Delete(person._id)
         .then((returnedData) => {
           setPersons(returnedData);
           setErrorMessage(`${person.name} is  deleted`);
@@ -37,7 +37,7 @@ export default function Persons({
         Array.isArray(personsToShow) &&
         personsToShow.map((person) => {
           return (
-            <div style={{ display: "flex" }} key={person.id}>
+            <div style={{ display: "flex" }} key={person._id}>
               <p style={{ margin: "0px" }}>
                 {person.name} {person.number}
               </p>
