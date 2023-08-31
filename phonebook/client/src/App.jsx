@@ -15,10 +15,10 @@ function App() {
 
   useEffect(() => {
     axiosClient
-      .get("/persons")
+      .getAll()
       .then((response) => {
         // console.log(response.data);
-        setPersons(response.data);
+        setPersons(response);
       })
       .catch((err) => {
         console.log(err);
